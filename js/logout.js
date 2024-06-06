@@ -1,5 +1,5 @@
 const logoutBtn = document.querySelector("#logout-btn");
 
 logoutBtn.addEventListener("click",()=>{
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 })

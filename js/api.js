@@ -3,7 +3,7 @@ $(document).ready(function () {
         url: 'http://localhost:3000/data',
         type: 'GET',
         dataType: 'json',
-        success: function (data) {
+        success: function (data) {  
             console.log(data);
             // $('#rac_huuco').text(data[0].huu_co);
             // $('#rac_taiche').text(data[0].tai_che);

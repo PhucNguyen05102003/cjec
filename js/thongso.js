@@ -1,42 +1,42 @@
-initBattery();
+initgarbage();
 
-function initBattery() {
-    const batteryLiquid = document.querySelector(".Bliquid");
-    const batteryStatus = document.querySelector(".Bstatus");
+function initgarbage() {
+    const G_Liquid = document.querySelector(".Bliquid");
+    const G_Status = document.querySelector(".Bstatus");
     const Bpercentage = document.querySelector(".Bpercentage");
-    navigator.getBattery().then((batt) => {   //truy cập vào API pin : navigator.getBattery()
+    navigator.getBattery().then((data) => {   //truy cập vào API pin : navigator.getBattery()
         // chuyển đổi từ số sang %
-        updateBattery = () => {
-            let level = Math.floor(batt.level * 100);
+        updategarbage = () => {
+            let level = Math.floor(data.level * 100);
             Bpercentage.innerHTML = level + "%";
-            batteryLiquid.style.height = `${parseInt(batt.level * 100)}%`;
+            G_Liquid.style.height = `${parseInt(data.level * 100)}%`;
             if (level == 100) {
-                batteryStatus.innerHTML = `Battery Full <i class="ri-battery-2-fill red-color"></i>`;
-                batteryLiquid.style.height = "103%";
+                G_Status.innerHTML = `garbage Full <i class="ri-garbage-2-fill red-color"></i>`;
+                G_Liquid.style.height = "103%";
             } else if (level <= 20 ) {
-                batteryStatus.innerHTML = `Low Charge`;
+                G_Status.innerHTML = `Low Charge`;
             } else {
-                batteryStatus.innerHTML = "";
+                G_Status.innerHTML = "";
             }
 
 
             // màu sắc theo %
             if (level <= 20) {
-                batteryLiquid.classList.add("gradient-color-green");
-                batteryLiquid.classList.remove("gradient-color-green", "gradient-color-orange", "gradient-color-yellow");
+                G_Liquid.classList.add("gradient-color-green");
+                G_Liquid.classList.remove("gradient-color-green", "gradient-color-orange", "gradient-color-yellow");
             } else if (level <= 48) {
-                batteryLiquid.classList.add("gradient-color-orange");
-                batteryLiquid.classList.remove("gradient-color-green", "gradient-color-red", "gradient-color-yellow");
+                G_Liquid.classList.add("gradient-color-orange");
+                G_Liquid.classList.remove("gradient-color-green", "gradient-color-red", "gradient-color-yellow");
             } else if (level <= 80) {
-                batteryLiquid.classList.add("gradient-color-yellow");
-                batteryLiquid.classList.remove("gradient-color-green", "gradient-color-orange", "gradient-color-red");
+                G_Liquid.classList.add("gradient-color-yellow");
+                G_Liquid.classList.remove("gradient-color-green", "gradient-color-orange", "gradient-color-red");
             } else {
-                batteryLiquid.classList.add("gradient-color-red");
-                batteryLiquid.classList.remove("gradient-color-red", "gradient-color-orange", "gradient-color-yellow");
+                G_Liquid.classList.add("gradient-color-red");
+                G_Liquid.classList.remove("gradient-color-red", "gradient-color-orange", "gradient-color-yellow");
             }
         }
-        updateBattery();
-        batt.addEventListener("chargingchange", () => { updateBattery() });
-        batt.addEventListener("levelchange", () => { updateBattery });
+        updategarbage();
+        batt.addEventListener("chargingchange", () => { updategarbage() });
+        batt.addEventListener("levelchange", () => { updategarbage });
     })
 }
